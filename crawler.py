@@ -187,7 +187,7 @@ class Crawler(object):
             
             # test
             try:
-                self.single_crawl(self._seed_videoID)
+                self.__do_single_crawl(self._seed_videoID)
             except Exception, e:
                 if 'Invalid request' in str(e):
                     continue
@@ -344,6 +344,10 @@ class Crawler(object):
         Arguments:
         - `key`: videoID
         """
+        crawledText = self.__do_single_crawl(key);
+        return parseString(crawledText)
+
+    def __do_single_crawl(self, key):
         if self._last_cookie_update_time == None:
             self.update_cookie_and_sectiontoken()
 
@@ -375,6 +379,4 @@ class Crawler(object):
         if '<error_message><![CDATA[Video is private.]]></error_message>' in txt:
             raise Exception('private video')
 
-        
-        return parseString(txt)
-    
+        return txt

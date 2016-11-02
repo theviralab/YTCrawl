@@ -35,8 +35,8 @@ def processResult(jsonDict):
                 continue
 
             data_point[m] = {
-                'daily': jsonDict[m]['daily']['data'][i],
-                'cumulative': jsonDict[m]['cumulative']['data'][i]
+                'daily': jsonDict[m]['daily']['data'][i] if 'daily' in jsonDict[m] else {},
+                'cumulative': jsonDict[m]['cumulative']['data'][i] if 'cumulative' in jsonDict[m] else {}
             }
 
 
