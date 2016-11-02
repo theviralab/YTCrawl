@@ -15,9 +15,9 @@ import datetime
 import re
 import cookielib
 
-from lib.logger import Logger
-from lib.sendemail import send_email
-from lib.xmlparser import *
+from logger import Logger
+from sendemail import send_email
+from xmlparser import *
 
 
 class Crawler(object):
